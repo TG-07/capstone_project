@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Method - Your Project Title</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/katex.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Your Project Title</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Overview</a></li>
+                    <li><a href="method.html" class="active">Method</a></li>
+                    <li><a href="results.html">Results</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="https://github.com/yourusername/your-repo" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Methodology</h1>
+                <p class="subtitle">How we approached the problem</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <h2>Overview</h2>
+                <p>This section provides an overview of your methodology. Explain the general approach
+                and how different components of your method work together to solve the problem.</p>
+
+                <h2>Data Collection and Preprocessing</h2>
+                <p>Describe the datasets used in your project. Where did you obtain the data? What preprocessing
+                steps did you take? Include information about data cleaning, normalization, and augmentation if applicable.</p>
+
+                <div class="image-container">
+                    <img src="images/data-preprocessing.png" alt="Data preprocessing pipeline">
+                    <p class="caption">Figure 1: Our data preprocessing pipeline.</p>
+                </div>
+
+                <h2>Model Architecture</h2>
+                <p>Describe the architecture of your model. What neural network structure did you use?
+                What are the key components of your algorithm? You can include mathematical formulations
+                if necessary.</p>
+
+                <div class="math" id="equation1">
+                    f(x) = \sum_{i=1}^{n} w_i \phi_i(x) + b
+                </div>
+
+                <div class="image-container">
+                    <img src="images/model-architecture.png" alt="Model architecture diagram">
+                    <p class="caption">Figure 2: Architecture of our proposed model.</p>
+                </div>
+
+                <h2>Training Procedure</h2>
+                <p>Explain how you trained your model. What loss functions did you use? What optimization
+                algorithm did you choose? What hyperparameters did you set? Discuss any challenges you
+                encountered during training and how you addressed them.</p>
+
+                <div class="code-block">
+                    <pre><code>
+# Example code snippet
+def train_model(model, train_loader, val_loader, criterion, optimizer, num_epochs=10):
+    best_val_acc = 0.0
+    
+    for epoch in range(num_epochs):
+        # Training phase
+        model.train()
+        running_loss = 0.0
+        
+        for inputs, labels in train_loader:
+            inputs = inputs.to(device)
+            labels = labels.to(device)
+            
+            # Zero the parameter gradients
+            optimizer.zero_grad()
+            
+            # Forward pass
+            outputs = model(inputs)
+            loss = criterion(outputs, labels)
+            
+            # Backward pass and optimize
+            loss.backward()
+            optimizer.step()
+            
+            running_loss += loss.item() * inputs.size(0)
+        
+        # Calculate training loss for this epoch
+        train_loss = running_loss / len(train_loader.dataset)
+        
+        # Validation phase
+        model.eval()
+        val_acc = evaluate_model(model, val_loader)
+        
+        # Save the best model
+        if val_acc > best_val_acc:
+            best_val_acc = val_acc
+            torch.save(model.state_dict(), 'best_model.pth')
+        
+        print(f'Epoch {epoch+1}/{num_epochs}, Train Loss: {train_loss:.4f}, Val Acc: {val_acc:.4f}')
+    
+    return model
+                    </code></pre>
+                </div>
+
+                <h2>Evaluation Metrics</h2>
+                <p>Describe the metrics you used to evaluate your method. Why did you choose these particular
+                metrics? How do they relate to the problem you're solving?</p>
+
+                <p>For more details on our results, please visit the <a href="results.html">Results</a> page.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Your Project Team. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/yourusername/your-repo" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <!-- Add more social links as needed -->
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+        });
+    </script>
+</body>
+</html>
